@@ -44,7 +44,7 @@ trap cleanup 0
 #
 # $1: device name
 # $2: vendor name
-# $3: AOSIP root directory
+# $3: FUTURE root directory
 # $4: is common device - optional, default to false
 # $5: cleanup - optional, default to true
 # $6: custom vendor makefile name - optional, default to false
@@ -779,16 +779,16 @@ function oat2dex() {
     local HOST="$(uname)"
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$AOSIP_ROOT"/vendor/aosip/build/tools/smali/baksmali.jar
-        export SMALIJAR="$AOSIP_ROOT"/vendor/aosip/build/tools/smali/smali.jar
+        export BAKSMALIJAR="$AOSIP_ROOT"/vendor/future/build/tools/smali/baksmali.jar
+        export SMALIJAR="$AOSIP_ROOT"/vendor/future/build/tools/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
-        export VDEXEXTRACTOR="$AOSIP_ROOT"/vendor/aosip/build/tools/"$HOST"/vdexExtractor
+        export VDEXEXTRACTOR="$AOSIP_ROOT"/vendor/future/build/tools/"$HOST"/vdexExtractor
     fi
 
     if [ -z "$CDEXCONVERTER" ]; then
-        export CDEXCONVERTER="$AOSIP_ROOT"/vendor/aosip/build/tools/"$HOST"/compact_dex_converter
+        export CDEXCONVERTER="$AOSIP_ROOT"/vendor/future/build/tools/"$HOST"/compact_dex_converter
     fi
 
     # Extract existing boot.oats to the temp folder
@@ -965,7 +965,7 @@ function extract() {
             # If OTA is block based, extract it.
             elif [ -a "$DUMPDIR"/system.new.dat ]; then
                 echo "Converting system.new.dat to system.img"
-                python "$AOSIP_ROOT"/vendor/AOSIP/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
+                python "$FUTURE_ROOT"/vendor/FUTURE/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
                 rm -rf "$DUMPDIR"/system.new.dat "$DUMPDIR"/system
                 mkdir "$DUMPDIR"/system "$DUMPDIR"/tmp
                 echo "Requesting sudo access to mount the system.img"
@@ -1051,7 +1051,7 @@ function extract() {
             printf '    + (keeping pinned file with hash %s)\n' "$HASH"
         else
             FOUND=false
-            # Try AOSiP target first.
+            # Try FUTURE target first.
             # Also try to search for files stripped of
             # the "/system" prefix, if we're actually extracting
             # from a system image.

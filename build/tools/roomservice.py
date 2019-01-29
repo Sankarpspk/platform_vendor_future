@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (C) 2012-2013, The CyanogenMod Project
 # Copyright (C) 2012-2015, SlimRoms Project
-# Copyright (C) 2016-2018, AOSiP
+# Copyright (C) 2016-2018, FUTURE
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,9 +32,9 @@ default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/aosip_manifest.xml"
 custom_default_revision = "pie"
-custom_dependencies = "aosip.dependencies"
+custom_dependencies = "future.dependencies"
 org_manifest = "devices"  # leave empty if org is provided in manifest
-org_display = "AOSiP-Devices"  # needed for displaying
+org_display = "FUTURE-Devices"  # needed for displaying
 
 github_auth = None
 

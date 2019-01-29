@@ -2,7 +2,6 @@ function hmm() {
 cat <<EOF
 Invoke ". build/envsetup.sh" from your shell to add the following functions to your environment:
 - lunch:     lunch <product_name>-<build_variant>
-- gerrit:    Adds a remote for AOSiP Gerrit
 
 
 Look at the source to view more functions. The complete list is:
@@ -48,22 +47,7 @@ function mk_timer()
 function repopick()
 {
     T=$(gettop)
-    $T/vendor/aosip/build/tools/repopick.py $@
-}
-
-function gerrit()
-{
-    if [ ! -d ".git" ]; then
-        echo -e "Please run this inside a git directory";
-    else
-        git remote rm gerrit 2>/dev/null;
-        [[ -z "${GERRIT_USER}" ]] && export GERRIT_USER=$(git config --get review.review.aosiprom.com.username);
-        if [[ -z "${GERRIT_USER}" ]]; then
-            git remote add gerrit $(git remote -v | grep -i "github\.com\/AOSiP\/" | awk '{print $2}' | uniq | sed -e "s|https://github.com/AOSiP|ssh://review.aosiprom.com:29418/AOSIP|");
-        else
-            git remote add gerrit $(git remote -v | grep -i "github\.com\/AOSiP\/" | awk '{print $2}' | uniq | sed -e "s|https://github.com/AOSiP|ssh://${GERRIT_USER}@review.aosiprom.com:29418/AOSIP|");
-        fi
-    fi
+    $T/vendor/future/build/tools/repopick.py $@
 }
 
 if [ "x$SHELL" != "x/bin/bash" ]; then

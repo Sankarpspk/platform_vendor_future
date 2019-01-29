@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, build/target/product/aosp_arm64.mk)
-$(call inherit-product, vendor/aosip/config/common_full_phone.mk)
+$(call inherit-product, build/target/product/aosp_x86.mk)
+$(call inherit-product, vendor/future/config/common_full_phone.mk)
 
-PRODUCT_NAME := aosip_arm64
+TARGET_USES_64_BIT_BINDER := true
+
+PRODUCT_NAME := aosip_x86

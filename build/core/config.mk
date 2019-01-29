@@ -1,5 +1,5 @@
 
-# Copyright (C) 2018 AOSiP
+# Copyright (C) 2018 Future-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ SELINUX_IGNORE_NEVERALLOWS := true
 endif
 
 # Rules for MTK targets
-include $(TOPDIR)vendor/aosip/build/core/mtk_target.mk
+include $(TOPDIR)vendor/future/build/core/mtk_target.mk
 
 # Rules for QCOM targets
-include $(TOPDIR)vendor/aosip/build/core/qcom_target.mk
+include $(TOPDIR)vendor/future/build/core/qcom_target.mk
 
-BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/aosip/build/core/system_rro.mk
+BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/future/build/core/system_rro.mk
